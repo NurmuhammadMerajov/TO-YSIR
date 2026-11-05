@@ -1,259 +1,1286 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d2a1f">
-<meta name="description" content="To'ysir — to'ylarda isrofni kamaytirish, menyuni hisoblash, to'yxona topish va to'yona yuborish platformasi.">
-<title>To'ysir — Aqlli to'y, kamroq isrof</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#0d2a1f;--g:#1f8a5b;--lime:#c8f169;--bg:#f3f6f1;--mut:#62726a;--ln:#dde5dc}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{font-family:Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
-:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
-.w{width:min(1120px,calc(100% - 40px));margin:auto}
-h1,h2,h3{line-height:1.1;letter-spacing:-.03em}
-h1{font-size:clamp(40px,6vw,74px);font-weight:800}h2{font-size:clamp(30px,4vw,44px);font-weight:800}h3{font-size:19px;font-weight:700}
-.ey{display:block;font-size:14px;font-weight:700;color:var(--g);margin-bottom:12px}
-.sec{padding:96px 0}.mut{color:var(--mut)}.hd{max-width:620px;margin-bottom:40px}.hd p{margin-top:14px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:1px solid transparent;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:700;font-size:14px;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(31,138,91,.28)}
-.btn.dk{background:var(--ink);color:#fff}.btn.ol{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}.btn.full{width:100%}
-header{position:sticky;top:0;z-index:100;background:rgba(13,42,31,.9);backdrop-filter:blur(14px);color:#fff;padding-top:env(safe-area-inset-top)}
-.nv{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:20px}
-.logo{font-weight:800;font-size:23px;letter-spacing:-.05em}.logo b{color:var(--lime)}
-.nl{display:flex;gap:28px;font-size:14px;font-weight:600;color:#b4c9bd}.nl a:hover,.nl a.cur{color:#fff}
-.nr{display:flex;gap:10px;align-items:center}.nr .btn{min-height:42px;padding:0 18px}
-#bm{display:none;width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:none;color:#fff;font-size:20px}
-.view{display:none}.view.on{display:block}
-.hero{background:radial-gradient(60% 70% at 88% 0,rgba(200,241,105,.18),transparent),radial-gradient(50% 60% at 0 100%,rgba(31,138,91,.4),transparent),var(--ink);color:#fff;padding:84px 0 96px}
-.hero .ey{color:var(--lime)}
-.hg{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.hero .l{color:#b4c9bd;font-size:18px;max-width:480px;margin:22px 0 32px}
-.row{display:flex;flex-wrap:wrap;gap:12px}
-.mock{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:28px;padding:28px}
-.mh{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:#b4c9bd;margin-bottom:22px}
-.chip{background:rgba(200,241,105,.16);color:var(--lime);border-radius:99px;padding:3px 12px;font-size:12px;font-weight:700}
-.mock .n{display:block;font-size:clamp(32px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--lime);line-height:1.1;margin:4px 0 8px}
-.br{display:grid;grid-template-columns:72px 1fr 48px;gap:10px;align-items:center;font-size:13px;margin-top:14px;color:#b4c9bd}
-.br u{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--lime) var(--w),rgba(255,255,255,.14) var(--w))}.br em{font-style:normal;color:#fff;text-align:right}
-.vs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ln)}
-.vs div{padding:28px 24px;border-right:1px solid var(--ln)}.vs div:last-child{border:0}.vs b{display:block}.vs span{color:var(--mut);font-size:14px}
-.cg{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
-.cg ul{list-style:none;margin-top:24px;display:grid;gap:12px}.cg li{padding-left:28px;position:relative}.cg li:before{content:"✓";position:absolute;left:0;color:var(--g);font-weight:800}
-.card{background:#fff;border:1px solid var(--ln);border-radius:24px;padding:28px;box-shadow:0 24px 60px rgba(13,42,31,.07)}
-label{display:block;font-size:13px;font-weight:700;margin:16px 0 6px}
-.in{width:100%;min-height:50px;padding:0 16px;border:1px solid var(--ln);border-radius:14px;background:var(--bg);font-size:15px;color:var(--ink)}.in:focus{outline:2px solid var(--g);background:#fff}
-.err{color:#b3261e;font-size:13px;margin-top:10px}.ok{background:#e6f4ea;color:#14532d;border-radius:14px;padding:14px 16px;margin-top:14px;font-size:14px}
-.card form>.btn{margin-top:18px}
-.res{border-top:1px solid var(--ln);margin-top:26px;padding-top:22px}
-.ing{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
-.ing div{background:var(--bg);border-radius:14px;padding:14px}.ing small{display:block;color:var(--mut);font-size:12px}.ing b{font-size:20px}
-.sv{background:var(--ink);color:#fff;border-radius:16px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.sv b{display:block;font-size:22px;color:var(--lime)}.sv span{font-size:12px;color:#b4c9bd}.note{font-size:12px;color:var(--mut);margin-top:12px}
-.vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-.vc{background:#fff;border:1px solid var(--ln);border-radius:24px;overflow:hidden}
-.vp{height:190px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px;background:var(--bg)}
-.vp:after{content:attr(data-i);position:absolute;right:18px;top:-14px;font-size:150px;font-weight:800;color:#fff;opacity:.13}
-.tag{background:rgba(255,255,255,.2);backdrop-filter:blur(6px);color:#fff;border-radius:99px;padding:4px 14px;font-size:12px;font-weight:700;position:relative}
-.vb{padding:22px}.vt{display:flex;justify-content:space-between;gap:10px;align-items:start}.rt{font-weight:800;font-size:14px}
-.vd{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;font-size:12px;color:var(--mut)}.vd b{display:block;color:var(--ink);font-size:15px}
-.dks{background:var(--ink);color:#fff}.dks .ey{color:var(--lime)}.dks .mut{color:#9db5a8}
-.rp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.pc{aspect-ratio:9/14;border-radius:26px;background:var(--bg);color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.pc:before,.rc:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(200,241,105,.3),transparent 45%),linear-gradient(transparent 40%,rgba(0,0,0,.5))}
-.pc>*{position:relative}.pc small{font-weight:700;opacity:.85}.pc h3{margin:10px 0 18px}
-.big{display:block;font-size:clamp(50px,7vw,70px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.cta{background:var(--lime);padding:72px 0}.cta .w{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.cta h2{max-width:620px}
-footer{background:var(--ink);color:#9db5a8;padding:36px 0 calc(36px + env(safe-area-inset-bottom));font-size:14px}
-footer .w{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}footer nav{display:flex;gap:22px}footer a:hover{color:#fff}
-.tg{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start}
-.wl{display:grid;gap:14px}
-.wc{text-align:left;background:#fff;border:2px solid var(--ln);border-radius:22px;padding:22px;color:var(--ink);transition:border-color .2s}
-.wc.on{border-color:var(--g);box-shadow:0 14px 40px rgba(31,138,91,.14)}
-.live{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:#c4302b;margin-bottom:8px}
-.live i{width:8px;height:8px;border-radius:50%;background:#e5484d;animation:pl 1.4s infinite}@keyframes pl{50%{opacity:.25}}
-.wm{display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-size:13px;color:var(--mut)}.wm b{color:var(--ink)}
-.tg aside{position:sticky;top:96px}.ch{display:flex;flex-wrap:wrap;gap:8px}
-.ch button{border:1px solid var(--ln);background:var(--bg);border-radius:99px;padding:8px 16px;font-weight:700;font-size:13px}.ch button:hover{border-color:var(--g)}
-.rl{list-style:none;margin-top:22px;border-top:1px solid var(--ln);padding-top:6px;font-size:14px}
-.rl li{display:grid;grid-template-columns:1fr auto;padding:10px 0;border-bottom:1px solid var(--ln)}.rl span{font-weight:800;color:var(--g)}.rl em{grid-column:1/-1;color:var(--mut);font-style:normal}
-.md{position:fixed;inset:0;z-index:250;background:rgba(13,42,31,.65);display:none;place-items:center;padding:20px}.md.on{display:grid}
-.md .card{width:min(440px,100%);max-height:100%;overflow:auto;position:relative}
-.mx{position:absolute;top:14px;right:16px;border:0;background:none;font-size:28px;color:var(--mut)}
-.rv{position:fixed;inset:0;z-index:300;background:#000;display:none}.rv.on{display:block}
-#rf{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;outline:0;overscroll-behavior:contain}#rf::-webkit-scrollbar{display:none}
-.rs{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:grid;place-items:center}
-.rc{position:relative;width:min(430px,100%);height:100%;color:#fff;background:var(--bg);display:flex;flex-direction:column;padding:56px 20px 28px;overflow:hidden}
-@media(min-width:600px){.rc{height:min(100%,860px);border-radius:28px}}
-.rm,.rcap,.rcat{position:relative}.rcat{font-weight:700}.rm{margin:auto 0}.rm span{font-size:20px;font-weight:700}
-.rcap p{margin:8px 0 16px;color:#e8f1ec;max-width:300px}
-.pg{position:absolute;top:18px;left:16px;right:16px;height:3px;background:rgba(255,255,255,.3);border-radius:3px;overflow:hidden}.pg i{display:block;height:100%;width:0;background:#fff}
-.act .pg i{animation:pg 7s linear forwards}@keyframes pg{to{width:100%}}
-.ra{position:absolute;right:14px;bottom:210px;display:grid;gap:14px}
-.ra button{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff;font-size:20px}.ra button.on{color:#ff5d73}
-.rx{position:fixed;top:calc(12px + env(safe-area-inset-top));right:14px;z-index:310;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.22);color:#fff;font-size:24px;backdrop-filter:blur(8px)}
-@media(max-width:820px){
-.hg,.cg,.tg{grid-template-columns:1fr}.sec{padding:68px 0}.tg aside{position:static}
-#bm{display:grid;place-items:center}.nr .btn{display:none}
-.nl{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:16px;background:var(--ink);padding:20px}.nl.open{display:flex}
-.vs{grid-template-columns:1fr}.vs div{border-right:0;border-bottom:1px solid var(--ln)}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To'ysir — Aqlli Tadbir Rejalashtirish va Isrofgarchilikni Qisqartirish Platformasi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #d97706;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.4);
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 999px;
+        }
+        .tab-active {
+            color: #d97706;
+            border-bottom: 3px solid #d97706;
+            font-weight: 700;
+            background-color: #fffbeb;
+        }
+        .bar-transition {
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite;
+        }
+    </style>
 </head>
-<body>
-<header><div class="w nv">
-<a href="#home" class="logo">To'<b>ysir</b></a>
-<nav class="nl" id="nl" aria-label="Asosiy menyu"><a href="#calculator">Kalkulyator</a><a href="#venues">To'yxonalar</a><a href="#reels">Reels</a><a href="#toyona">To'yona</a></nav>
-<div class="nr"><a class="btn" href="#toyona">To'yona yuborish</a><button id="bm" aria-label="Menyu">☰</button></div>
-</div></header>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
 
-<main>
-<div class="view on" id="v-home">
-<section class="hero" id="home"><div class="w hg">
-<div><span class="ey">Oqilona reja, fayzli to'y</span>
-<h1>To'yda dasturxon to'kin, isrof esa kam bo'lsin</h1>
-<p class="l">Mehmonlar soniga qarab menyuni aniq hisoblang, to'yxonani tanlang va hozir bo'layotgan to'ylarga to'yona yuboring.</p>
-<div class="row"><a class="btn" href="#calculator">Menyuni hisoblash</a><a class="btn ol" href="#toyona">To'yona yuborish</a></div></div>
-<div class="mock" aria-label="Hisob-kitob namunasi"><div class="mh"><span>Menyu hisobi</span><span class="chip">100 mehmon</span></div>
-<span style="color:#b4c9bd;font-size:14px">Taxminiy tejash</span><b class="n">2 000 000 so'm</b>
-<div class="br"><span>Guruch</span><u style="--w:100%"></u><em>15 kg</em></div>
-<div class="br"><span>Go'sht</span><u style="--w:100%"></u><em>15 kg</em></div>
-<div class="br"><span>Sabzi</span><u style="--w:100%"></u><em>15 kg</em></div></div>
-</div></section>
+    <!-- Top Impact Banner for Judges (Hakamlar uchun jonli ko'rsatkichlar) -->
+    <div class="bg-slate-900 text-white text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>
+                    MVP LIVE DEMO: BUXORO PILOT LOYIHASI
+                </span>
+                <span class="hidden md:inline text-slate-400">|</span>
+                <span class="hidden md:inline text-slate-300">Muallif: <strong>Merajov Nurmuhammad</strong> ("Eng innovatsion g'oya" tanlovi uchun)</span>
+            </div>
+            <div class="flex items-center space-x-4 text-xs">
+                <div><i class="fa-solid fa-leaf text-emerald-400 mr-1"></i>Jami tejalgan ovqat: <strong id="globalSavedFood" class="text-emerald-400">14,820 kg</strong></div>
+                <div><i class="fa-solid fa-wallet text-amber-400 mr-1"></i>Oilalar tejagan pul: <strong id="globalSavedMoney" class="text-amber-400">1.12 mlrd so'm</strong></div>
+            </div>
+        </div>
+    </div>
 
-<div class="vs w"><div><b>Aniq hisob-kitob</b><span>Mehmonlar soniga mos menyu</span></div><div><b>Oqilona byudjet</b><span>Ortiqcha xarajatni kamaytiring</span></div><div><b>Kamroq isrof</b><span>Taomga va mehnatga hurmat</span></div></div>
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-30 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between py-3 md:py-0">
+                <!-- Brand Logo -->
+                <div class="flex items-center justify-between py-2 md:py-4">
+                    <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('calculator')">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
+                            <i class="fa-solid fa-crown text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-extrabold tracking-tight text-slate-900">To'ysir</span>
+                                <span class="text-[10px] font-bold uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md">AI + B2B2C</span>
+                            </div>
+                            <p class="text-[11px] font-semibold tracking-wider text-emerald-600 uppercase">Smart & Isrofsiz To'y Ekotizimi</p>
+                        </div>
+                    </div>
+                    <button onclick="openPitchModal()" class="md:hidden px-3 py-1.5 bg-slate-900 text-white text-xs font-semibold rounded-lg flex items-center space-x-1">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                        <span>Hakamlar uchun</span>
+                    </button>
+                </div>
 
-<section class="sec" id="calculator"><div class="w cg">
-<div><span class="ey">Aqlli kalkulyator</span><h2>Dasturxonni oldindan rejalashtiring</h2>
-<p class="mut" style="margin-top:14px">Mehmonlar sonini va menyuni tanlang — kerakli mahsulotlar, taxminiy tejash va isrof ko'rsatkichlarini ko'rasiz.</p>
-<ul><li>Guruch, go'sht, sabzi va boshqa masalliqlar ro'yxati</li><li>Taxminiy tejash va isrof kamayishi</li><li>Ikki xil menyu varianti</li></ul></div>
-<div class="card"><form id="cf" novalidate>
-<h3>To'y menyusi hisobi</h3>
-<label for="gs">Mehmonlar soni</label><input class="in" id="gs" type="number" min="1" max="10000" value="100" inputmode="numeric">
-<label for="mn">Menyu turi</label><select class="in" id="mn"><option value="plov">Faqat Palov</option><option value="mixed">Palov va Qozonkabob</option></select>
-<p class="err" id="ce" role="alert" hidden></p>
-<button class="btn dk full" type="submit">Hisoblash</button></form>
-<div class="res" aria-live="polite"><div style="display:flex;justify-content:space-between;gap:10px"><h3>Kerakli mahsulotlar</h3><span class="chip" style="background:#e6f4ea;color:#14532d" id="rb"></span></div>
-<p class="mut" id="rm" style="font-size:14px"></p><div class="ing" id="il"></div>
-<div class="sv"><div><b id="sa"></b><span>Taxminiy tejash</span></div><div><b id="wa"></b><span>Oldi olinadigan isrof</span></div></div>
-<p class="note">Namoyish uchun taxminiy me'yorlar; haqiqiy miqdor porsiya va narxlarga bog'liq.</p></div></div>
-</div></section>
+                <!-- Navigation Tabs -->
+                <nav class="flex space-x-1 overflow-x-auto no-scrollbar border-t md:border-t-0 pt-1 md:pt-0">
+                    <button onclick="switchTab('calculator')" id="tab-calculator" class="tab-btn tab-active px-4 py-4 text-sm font-medium text-slate-600 hover:text-amber-600 whitespace-nowrap flex items-center space-x-2 transition-all rounded-t-lg">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>AI Isrofsiz Menyu</span>
+                    </button>
+                    <button onclick="switchTab('venues')" id="tab-venues" class="tab-btn px-4 py-4 text-sm font-medium text-slate-600 hover:text-amber-600 whitespace-nowrap flex items-center space-x-2 transition-all rounded-t-lg">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <span>Buxoro To'yxonalari</span>
+                    </button>
+                    <button onclick="switchTab('esg')" id="tab-esg" class="tab-btn px-4 py-4 text-sm font-medium text-slate-600 hover:text-amber-600 whitespace-nowrap flex items-center space-x-2 transition-all rounded-t-lg">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                        <span>Food Rescue & To'yona</span>
+                    </button>
+                    <button onclick="switchTab('reels')" id="tab-reels" class="tab-btn px-4 py-4 text-sm font-medium text-slate-600 hover:text-amber-600 whitespace-nowrap flex items-center space-x-2 transition-all rounded-t-lg">
+                        <i class="fa-solid fa-clapperboard"></i>
+                        <span>To'ysir Reels (Trend)</span>
+                    </button>
+                </nav>
 
-<section class="sec" id="venues" style="padding-top:20px"><div class="w">
-<div class="hd"><span class="ey">To'yxonalar</span><h2>To'yingizga mos maskanni toping</h2><p class="mut">Sig'imi va uslubini solishtiring, so'ng so'rov yuboring.</p></div>
-<div class="vg" id="vg"></div></div></section>
+                <!-- Quick Pitch Assist Button -->
+                <div class="hidden md:flex items-center">
+                    <button onclick="openPitchModal()" class="px-4 py-2 bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white text-xs font-semibold rounded-xl shadow-sm flex items-center space-x-2 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-award text-amber-400 text-sm"></i>
+                        <span>Hakamlar Eslatmasi (Pitch)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<section class="sec dks" id="reels"><div class="w">
-<div class="hd"><span class="ey">To'ysir Reels</span><h2>Eng tejamkor to'ylar hikoyasi</h2><p class="mut">Birini tanlang — to'liq ekranda oching va yuqoriga surib keyingisiga o'ting.</p></div>
-<div class="rp" id="rp"></div>
-<p class="mut" style="margin-top:22px;font-size:13px">Namoyish: hikoyalar va raqamlar namunaviy, videolar keyin ulanadi.</p></div></section>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-<section class="cta"><div class="w"><h2>To'yingiz fayzli, xarajatlaringiz oqilona bo'lsin.</h2><a class="btn dk" href="#calculator">Hisoblashni boshlash</a></div></section>
-</div>
+        <!-- ========================================== -->
+        <!-- TAB 1: AI ISROFSIZ KALKULYATOR (DEFAULT)   -->
+        <!-- ========================================== -->
+        <section id="view-calculator" class="space-y-6">
+            <!-- Top Banner -->
+            <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-2xl p-6 border border-emerald-200/80 shadow-sm flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+                <div class="space-y-1.5">
+                    <span class="inline-block px-3 py-1 bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider rounded-md shadow-sm">
+                        ZERO-WASTE AI OPTIMIZER
+                    </span>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Sun'iy Intellekt Bilan Isrofsiz Menyu va Byudjet</h1>
+                    <p class="text-sm text-slate-600 max-w-2xl">
+                        "Yetmay qolmasin" degan qo'rquv sababli 25-35% oziq-ovqat chiqindiga aylanadi. Mehmonlar yoshi, fasl va tanlangan to'yxonani kiriting — algoritmimiz eng optimal me'yorni hisoblab beradi.
+                    </p>
+                </div>
 
-<div class="view" id="v-toyona"><section class="sec" style="padding-top:64px"><div class="w">
-<div class="hd"><span class="ey">To'yona</span><h2>Hozir bo'layotgan to'ylar</h2><p class="mut">To'yni tanlang, summani belgilang va tilagingizni qo'shib yuboring. Yoshlarga yetib boradi.</p></div>
-<div class="tg"><div class="wl" id="wl"></div>
-<aside class="card"><h3 id="tt"></h3>
-<form id="tf" novalidate>
-<label for="tn">Ismingiz</label><input class="in" id="tn" maxlength="60" placeholder="Masalan, Jasur">
-<label>Summa</label><div class="ch" id="ch"></div>
-<label for="ta">Yoki o'z summangiz (so'm)</label><input class="in" id="ta" type="number" min="10000" step="1000" placeholder="Masalan, 150000" inputmode="numeric">
-<label for="tw">Tilak</label><input class="in" id="tw" maxlength="120" placeholder="Baxtli bo'ling!">
-<p class="err" id="te" role="alert" hidden></p>
-<button class="btn full" type="submit">To'yona yuborish</button>
-<div class="ok" id="ts" hidden></div>
-<p class="note">Demo: haqiqiy to'lov amalga oshirilmaydi.</p></form>
-<ul class="rl" id="rl"></ul></aside></div>
-</div></section></div>
-</main>
+                <!-- Eco-Banket Special Toggle Card -->
+                <div class="bg-white p-4 rounded-xl border border-emerald-200 shadow-sm flex items-center space-x-4 w-full lg:w-auto justify-between lg:justify-start">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-utensils text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                            <span>Maxsus Tarelka (Eco-Banket)</span>
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-semibold">+8% tejamkor</span>
+                        </div>
+                        <p class="text-xs text-slate-500">Mehmonlar uchun individual porsiya tizimi</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="ecoPlateToggle" class="sr-only peer" onchange="calculateAIMenu()">
+                        <div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+                    </label>
+                </div>
+            </div>
 
-<footer><div class="w"><a href="#home" class="logo" style="color:#fff">To'<b>ysir</b></a><nav><a href="#calculator">Kalkulyator</a><a href="#venues">To'yxonalar</a><a href="#reels">Reels</a><a href="#toyona">To'yona</a></nav><span>© 2026 To'ysir</span></div></footer>
+            <!-- Main Calculator Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left Column: Input Parameters (5 cols) -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-amber-500"></i>
+                            <span>To'y Parametrlari</span>
+                        </h2>
+                        <span class="text-xs font-medium text-slate-400">Real-vaqt rejimida</span>
+                    </div>
 
-<div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="mtl"><div class="card">
-<button class="mx" id="mx" aria-label="Yopish">×</button><h3 id="mtl">To'yxonani band qilish</h3><p class="mut" id="mdd" style="font-size:14px"></p>
-<form id="bf" novalidate>
-<label for="bn">Ismingiz</label><input class="in" id="bn" maxlength="100">
-<label for="bp">Telefon</label><input class="in" id="bp" type="tel" placeholder="+998 90 123 45 67">
-<label for="bd">To'y sanasi</label><input class="in" id="bd" type="date">
-<label for="bg">Mehmonlar soni</label><input class="in" id="bg" type="number" min="1" max="10000">
-<p class="err" id="be" role="alert" hidden></p>
-<button class="btn dk full" type="submit">So'rov yuborish</button><div class="ok" id="bs" hidden></div></form></div></div>
+                    <!-- Selected Venue in Bukhara -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Tanlangan To'yxona (Buxoro)</label>
+                        <select id="calcVenueSelect" onchange="calculateAIMenu()" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold text-slate-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition">
+                            <option value="220000" data-name="Sitora Premium Saroyi (Buxoro sh.)">Sitora Premium Saroyi (Buxoro sh.) — 220,000 so'm/kishi</option>
+                            <option value="260000" data-name="Ark Palace Grand Hall (Buxoro sh.)">Ark Palace Grand Hall (Buxoro sh.) — 260,000 so'm/kishi</option>
+                            <option value="180000" data-name="Buxoro Gavhari Koshonasi (Kogon)">Buxoro Gavhari Koshonasi (Kogon) — 180,000 so'm/kishi</option>
+                            <option value="165000" data-name="G'ijduvon Shodlik Saroyi (G'ijduvon)">G'ijduvon Shodlik Saroyi (G'ijduvon) — 165,000 so'm/kishi</option>
+                            <option value="195000" data-name="Poi Kalon Fayz (Buxoro sh.)">Poi Kalon Fayz (Buxoro sh.) — 195,000 so'm/kishi</option>
+                        </select>
+                    </div>
 
-<div class="rv" id="rv" aria-hidden="true"><button class="rx" id="rxc" aria-label="Reelsni yopish">×</button><div id="rf" tabindex="0"></div></div>
+                    <!-- Guest Count Slider -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label class="text-sm font-semibold text-slate-700">Mehmonlar Soni:</label>
+                            <span class="text-xl font-extrabold text-amber-600 bg-amber-50 px-3 py-1 rounded-lg border border-amber-200"><span id="guestCountDisplay">300</span> kishi</span>
+                        </div>
+                        <input type="range" id="guestCountSlider" min="50" max="800" step="10" value="300" oninput="calculateAIMenu()">
+                        <div class="flex justify-between text-[11px] text-slate-400 font-medium">
+                            <span>50 kishi (Ixcham)</span>
+                            <span>300 kishi (O'rtacha)</span>
+                            <span>800 kishi (Katta)</span>
+                        </div>
+                    </div>
 
-<script>
-"use strict";
-const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)];
-const f=n=>new Intl.NumberFormat("uz-UZ",{maximumFractionDigits:1}).format(n),so=n=>f(Math.round(n))+" so'm";
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+                    <!-- Season & Time of Day -->
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Mavsum (Fasl)</label>
+                            <select id="seasonSelect" onchange="calculateAIMenu()" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 bg-white focus:border-amber-500 outline-none">
+                                <option value="summer">☀️ Yoz (Issiq — ko'p ichimlik)</option>
+                                <option value="autumn" selected>🍂 Kuz (Me'yoriy)</option>
+                                <option value="winter">❄️ Qish (To'yimli taomlar)</option>
+                                <option value="spring">🌱 Bahor (Yengil menyu)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1.5">Marosim turi</label>
+                            <select id="eventTypeSelect" onchange="calculateAIMenu()" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 bg-white focus:border-amber-500 outline-none">
+                                <option value="evening" selected>🌙 Kechki Visol Oqshomi</option>
+                                <option value="morning">🌅 Nahorgi Osh / Sunnat to'yi</option>
+                            </select>
+                        </div>
+                    </div>
 
-// Sahifalar (hash routing): #toyona alohida sahifa, qolganlari bosh sahifa bo'limlari
-function route(){const h=location.hash.slice(1),t=h==="toyona";
-$("#v-home").classList.toggle("on",!t);$("#v-toyona").classList.toggle("on",t);$("#nl").classList.remove("open");
-const el=!t&&h&&document.getElementById(h);el?el.scrollIntoView():scrollTo(0,0);
-$$(".nl a").forEach(a=>a.classList.toggle("cur",a.getAttribute("href")==="#"+h))}
-addEventListener("hashchange",route);route();
-$("#bm").onclick=()=>$("#nl").classList.toggle("open");
+                    <!-- Demographic Sliders -->
+                    <div class="pt-3 border-t border-slate-100 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Mehmonlar Tarkibi (Yosh bo'yicha)</span>
+                            <span id="demoTotalBadge" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Jami: 100%</span>
+                        </div>
 
-// Kalkulyator
-const M={plov:{l:"Faqat Palov",i:[["Guruch",15],["Go'sht",15],["Sabzi",15]]},mixed:{l:"Palov va Qozonkabob",i:[["Guruch",12],["Go'sht",22],["Sabzi",12],["Kartoshka",20]]}};
-function calc(g,m){const c=M[m];$("#rb").textContent=c.l;$("#rm").textContent=f(g)+" nafar mehmon uchun taxminiy hisob.";
-$("#il").innerHTML=c.i.map(([n,a])=>`<div><small>${n}</small><b>${f(a*g/100)} kg</b></div>`).join("");$("#sa").textContent=so(g*20000);$("#wa").textContent=f(g*.2)+" kg"}
-$("#cf").onsubmit=e=>{e.preventDefault();const g=Number($("#gs").value),er=$("#ce");
-if(!Number.isInteger(g)||g<1||g>10000){er.textContent="Mehmonlar soni 1 dan 10 000 gacha butun son bo'lishi kerak.";er.hidden=false;return}
-er.hidden=true;calc(g,$("#mn").value)};calc(100,"plov");
+                        <!-- Seniors -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-semibold text-slate-700">
+                                <span>👴 Keksalar va Otaxonlar (Kamroq yog'li/shirin)</span>
+                                <span id="seniorsVal" class="text-slate-900 font-bold">25%</span>
+                            </div>
+                            <input type="range" id="seniorsSlider" min="5" max="60" value="25" oninput="balanceDemographics('seniors')">
+                        </div>
 
-// To'yxonalar va band qilish
-const V=[["Humo To'yxonasi","Toshkent","500","Milliy","Oilaviy to'ylar","4.8","#0d2a1f,#1f8a5b"],["Shodlik Palace","Samarqand","700","Zamonaviy","Hashamatli","4.9","#1b2a4a,#3b6fb6"],["Sokin Bog' To'yxonasi","Buxoro","350","Ochiq bog'","Tabiat qo'ynida","4.7","#3b4a12,#8fb339"]];
-$("#vg").innerHTML=V.map((v,i)=>`<article class="vc"><div class="vp" data-i="${v[0][0]}" style="background:linear-gradient(135deg,${v[6]})"><span class="tag">${v[4]}</span></div><div class="vb"><div class="vt"><h3>${v[0]}</h3><span class="rt">★ ${v[5]}</span></div><p class="mut">${v[1]}, O'zbekiston</p><div class="vd"><span><b>${v[2]} kishi</b>Sig'imi</span><span><b>${v[3]}</b>Uslub</span></div><button class="btn dk full" data-i="${i}">Band qilish</button></div></article>`).join("");
-let sv="";const today=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);$("#bd").min=today;
-const cm=()=>$("#md").classList.remove("on");
-$("#vg").onclick=e=>{const b=e.target.closest("button");if(!b)return;sv=V[b.dataset.i][0];$("#mdd").textContent=sv+" uchun so'rov ma'lumotlarini kiriting.";$("#bf").reset();$("#be").hidden=$("#bs").hidden=true;$("#md").classList.add("on");$("#bn").focus()};
-$("#mx").onclick=cm;$("#md").onclick=e=>{if(e.target.id==="md")cm()};
-$("#bf").onsubmit=e=>{e.preventDefault();const n=$("#bn").value.trim(),p=$("#bp").value.trim(),d=$("#bd").value,g=Number($("#bg").value),er=$("#be");
-const m=n.length<2?"Ismingizni to'liq kiriting.":p.length<7?"To'g'ri telefon raqamini kiriting.":(!d||d<today)?"Bugungi yoki kelajakdagi sanani tanlang.":(!Number.isInteger(g)||g<1||g>10000)?"Mehmonlar sonini 1 dan 10 000 gacha kiriting.":"";
-er.hidden=!m;er.textContent=m;if(m)return;$("#bs").innerHTML=`<b>Demo so'rov tayyor.</b><br>${esc(sv)} · ${esc(d)} · ${f(g)} kishi<br>Bu prototip haqiqiy so'rov yubormaydi.`;$("#bs").hidden=false};
+                        <!-- Adults -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-semibold text-slate-700">
+                                <span>🧑 Kattalar va Yoshlar (Asosiy iste'molchilar)</span>
+                                <span id="adultsVal" class="text-slate-900 font-bold">60%</span>
+                            </div>
+                            <input type="range" id="adultsSlider" min="20" max="85" value="60" oninput="balanceDemographics('adults')">
+                        </div>
 
-// Reels: kartadagi tugma to'liq ekranli vertikal lentani ochadi
-const R=[["Buxoro · Oilaviy to'y","Buxoroda 200 kishilik tejamkor to'y","2,4 mln","so'm tejaldi","Menyu oldindan hisoblandi — ortib qolgan taom deyarli bo'lmadi.","linear-gradient(160deg,#0d2a1f,#1f8a5b)"],
-["Samarqand · Milliy dasturxon","Har bir masalliq hisobda","30 kg","isrof oldi olindi","Guruch, go'sht va sabzi mehmonlar soniga qarab aniq o'lchandi.","linear-gradient(160deg,#1b2a4a,#3b6fb6)"],
-["Farg'ona · Ekologik yondashuv","Kamroq isrof, ko'proq baraka","−35%","xarajat kamaydi","Ortiqcha tayyorgarlik o'rniga oqilona reja va to'g'ri me'yor.","linear-gradient(160deg,#3b4a12,#8fb339)"]];
-$("#rp").innerHTML=R.map((r,i)=>`<article class="pc" style="background:${r[5]}"><small>${r[0]}</small><div><b class="big">${r[2]}</b><span>${r[3]}</span><h3>${r[1]}</h3><button class="btn full" data-i="${i}">Reelsni ko'rish</button></div></article>`).join("");
-let ob;const rf=$("#rf");
-function closeR(){$("#rv").classList.remove("on");document.body.style.overflow="";ob&&ob.disconnect()}
-function openR(i){rf.innerHTML=R.map((r,j)=>`<section class="rs"><div class="rc" style="background:${r[5]}"><div class="pg"><i></i></div><span class="rcat">${r[0]}</span><div class="rm"><b class="big">${r[2]}</b><span>${r[3]}</span></div><div class="rcap"><h3>${r[1]}</h3><p>${r[4]}</p><a class="btn full" href="#calculator" data-c>Siz ham hisoblab ko'ring</a></div><div class="ra"><button data-l aria-label="Yoqdi">♥</button><button data-s aria-label="Ulashish">↗</button></div></div></section>`).join("");
-$("#rv").classList.add("on");document.body.style.overflow="hidden";rf.children[i].scrollIntoView({behavior:"instant"});rf.focus();
-ob&&ob.disconnect();ob=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.remove("act");if(e.isIntersecting){void e.target.offsetWidth;e.target.classList.add("act")}}),{root:rf,threshold:.6});[...rf.children].forEach(s=>ob.observe(s))}
-$("#rp").onclick=e=>{const b=e.target.closest("button");b&&openR(+b.dataset.i)};
-$("#rxc").onclick=closeR;
-addEventListener("keydown",e=>{if(e.key==="Escape"){closeR();cm()}});
-rf.addEventListener("animationend",e=>{const n=e.target.closest(".rs")?.nextElementSibling;n&&n.scrollIntoView({behavior:"smooth"})});
-rf.addEventListener("click",e=>{const b=e.target.closest("button,a");if(!b)return;
-if(b.dataset.l!==undefined)b.classList.toggle("on");
-else if(b.dataset.s!==undefined)navigator.share&&navigator.share({title:"To'ysir",url:location.href}).catch(()=>{});
-else if(b.dataset.c!==undefined){closeR();setTimeout(route)}});
+                        <!-- Kids -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-semibold text-slate-700">
+                                <span>🧒 Bolalar (Asosan shirinlik va ichimlik)</span>
+                                <span id="kidsVal" class="text-slate-900 font-bold">15%</span>
+                            </div>
+                            <input type="range" id="kidsSlider" min="0" max="50" value="15" oninput="balanceDemographics('kids')">
+                        </div>
+                    </div>
 
-// To'yona sahifasi
-const W=[{n:"Aziz & Madina",v:"Humo To'yxonasi, Toshkent",g:312,s:41200000,l:[["Jasur","Baxtli bo'linglar!",200000]]},
-{n:"Sardor & Dilnoza",v:"Shodlik Palace, Samarqand",g:486,s:68500000,l:[["Malika","Umr yo'ldoshingiz bilan baxtli yashang",300000]]},
-{n:"Bekzod & Nilufar",v:"Sokin Bog' To'yxonasi, Buxoro",g:205,s:22800000,l:[]}];let si=0;
-function rw(){$("#wl").innerHTML=W.map((w,i)=>`<button class="wc${i===si?" on":""}" data-i="${i}" aria-pressed="${i===si}"><span class="live"><i></i>Hozir to'y bo'lyapti</span><h3>${w.n}</h3><p class="mut">${w.v}</p><div class="wm"><span><b>${f(w.g)}</b> mehmon</span><span>Jami: <b>${so(w.s)}</b></span></div></button>`).join("");
-const w=W[si];$("#tt").textContent=w.n+" to'yiga to'yona";
-$("#rl").innerHTML=w.l.length?w.l.map(x=>`<li><b>${esc(x[0])}</b><span>${so(x[2])}</span><em>${esc(x[1])}</em></li>`).join(""):"<li class='mut'>Hali to'yona yo'q. Birinchi bo'ling!</li>"}
-$("#ch").innerHTML=[50000,100000,200000,500000].map(a=>`<button type="button" data-a="${a}">${f(a)}</button>`).join("");
-$("#ch").onclick=e=>{const b=e.target.closest("button");b&&($("#ta").value=b.dataset.a)};
-$("#wl").onclick=e=>{const b=e.target.closest("button");if(b){si=+b.dataset.i;$("#ts").hidden=true;rw()}};
-$("#tf").onsubmit=e=>{e.preventDefault();const n=$("#tn").value.trim()||"Mehmon",a=Number($("#ta").value),er=$("#te");
-const m=!Number.isFinite(a)||a<10000?"Summa kamida 10 000 so'm bo'lishi kerak.":a>50000000?"Summa 50 000 000 so'mdan oshmasligi kerak.":"";
-er.hidden=!m;er.textContent=m;if(m)return;const w=W[si];w.s+=a;w.g+=0;w.l.unshift([n,$("#tw").value.trim()||"Tabriklaymiz!",a]);rw();
-$("#ts").innerHTML=`<b>Rahmat, ${esc(n)}!</b><br>${so(a)} — ${esc(w.n)} to'yiga yuborildi (demo).`;$("#ts").hidden=false;$("#ta").value=$("#tw").value=""};
-rw();
-</script>
+                    <!-- Action Buttons -->
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                        <button onclick="triggerAIAnimation()" class="flex-1 py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl shadow-md shadow-amber-500/20 flex items-center justify-center space-x-2 transition transform active:scale-95">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>AI Tahlilni Yangilash</span>
+                        </button>
+                        <button onclick="openCRMModal()" class="py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md shadow-emerald-600/20 flex items-center justify-center space-x-2 transition">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>CRM Buyurtma</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Real-Time Output & Table (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Dark Barometer Card (Matches Slide 9) -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden border border-slate-800">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Isrofsiz Barometr (Data-Driven Tahlil)</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-0.5" id="barometerSubtitle">Sitora Premium Saroyi • 300 mehmon uchun hisobot</p>
+                            </div>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                Live AI Tahlil
+                            </span>
+                        </div>
+
+                        <!-- Key Metrics Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4">
+                                <span class="text-xs text-slate-400 block">Tejalgan Oziq-Ovqat:</span>
+                                <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1" id="savedFoodKg">~176 kg</div>
+                                <span class="text-[11px] text-emerald-300 font-medium mt-1 inline-block" id="wasteReductionPct">↓ -38% isrof qisqardi</span>
+                            </div>
+
+                            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4">
+                                <span class="text-xs text-slate-400 block">Iqtisod Qilingan Pul:</span>
+                                <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1" id="savedMoneyUzs">14.2 mln so'm</div>
+                                <span class="text-[11px] text-amber-200/80 font-medium mt-1 inline-block">Qarz olish ehtiyoji kamayadi</span>
+                            </div>
+
+                            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4">
+                                <span class="text-xs text-slate-400 block">Optimal To'y Byudjeti:</span>
+                                <div class="text-xl sm:text-2xl font-extrabold text-white mt-1" id="optimalBudgetUzs">51.8 mln so'm</div>
+                                <span class="text-[11px] text-slate-400 line-through block mt-1" id="traditionalBudgetUzs">An'anaviy: 66.0 mln so'm</span>
+                            </div>
+                        </div>
+
+                        <!-- Visual Comparison Bars -->
+                        <div class="space-y-4 pt-2 border-t border-slate-800">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                    <span class="text-slate-300">An'anaviy To'y Menyusi (Ortib qolishi va isrof xavfi yuqori):</span>
+                                    <span class="text-rose-400 font-bold" id="tradTotalKg">435 kg masalliq</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-rose-500 to-amber-500 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                    <span class="text-emerald-300">To'ysir AI Optimizatsiyalashgan Menyu (100% to'kin va isrofsiz):</span>
+                                    <span class="text-emerald-400 font-bold" id="aiTotalKg">259 kg masalliq</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+                                    <div id="aiComparisonBar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full bar-transition" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed AI Recommended Menu Breakdown Table -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+                            <div>
+                                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                                    <i class="fa-solid fa-utensils text-amber-500"></i>
+                                    <span>AI Tavsiya Etgan Aniq Masalliqlar Me'yori</span>
+                                </h3>
+                                <p class="text-xs text-slate-500">Mehmonlar yosh tarkibi va mavsumiy koeffitsiyentlar hisobga olingan</p>
+                            </div>
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-semibold">
+                                1 kishiga o'rtacha: <strong id="perPersonGrams">860 gr</strong>
+                            </span>
+                        </div>
+
+                        <div class="overflow-x-auto mt-4">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-slate-200 text-[11px] font-bold uppercase text-slate-400 tracking-wider">
+                                        <th class="py-2.5 px-2">Taom / Mahsulot Turi</th>
+                                        <th class="py-2.5 px-2">1 Kishiga (AI)</th>
+                                        <th class="py-2.5 px-2">An'anaviy (Isrofli)</th>
+                                        <th class="py-2.5 px-2">To'ysir AI Jami</th>
+                                        <th class="py-2.5 px-2 text-right">Tejalgan Pul</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="menuTableBody" class="divide-y divide-slate-100 text-sm">
+                                    <!-- Dynamically populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: TO'YXONALAR KATALOGI (BUXORO MVP)   -->
+        <!-- ========================================== -->
+        <section id="view-venues" class="hidden space-y-6">
+            <!-- Filter Box -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <h2 class="text-xl font-extrabold text-slate-900">Buxoro To'yxonalari Yagona Shaffof Katalogi</h2>
+                        <p class="text-xs text-slate-500">Vositachilarsiz, yashirin ustamalarsiz to'g'ridan-to'g'ri onlayn band qilish tizimi</p>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
+                        <i class="fa-solid fa-circle-check mr-1.5 text-amber-600"></i>
+                        <span id="venueCountBadge">6 ta tasdiqlangan koshona</span>
+                    </span>
+                </div>
+
+                <!-- Filters Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">To'yxona nomi</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                            <input type="text" id="venueSearchInput" oninput="filterVenues()" placeholder="Masalan: Sitora, Ark..." class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-sm focus:border-amber-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Mehmonlar sig'imi: <span id="filterCapVal" class="text-amber-600 font-extrabold">250+ kishi</span></label>
+                        <input type="range" id="venueCapSlider" min="100" max="600" step="50" value="250" oninput="filterVenues()" class="mt-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Hudud / Tuman (Buxoro)</label>
+                        <select id="venueDistrictSelect" onchange="filterVenues()" class="w-full py-2 px-3 rounded-xl border border-slate-200 text-sm bg-white focus:border-amber-500 outline-none">
+                            <option value="all">Barcha hududlar (Buxoro vil.)</option>
+                            <option value="Buxoro sh.">Buxoro shahri</option>
+                            <option value="Kogon">Kogon shahri / tumani</option>
+                            <option value="G'ijduvon">G'ijduvon tumani</option>
+                            <option value="Vobkent">Vobkent tumani</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Maksimal narx (1 kishiga)</label>
+                        <select id="venuePriceSelect" onchange="filterVenues()" class="w-full py-2 px-3 rounded-xl border border-slate-200 text-sm bg-white focus:border-amber-500 outline-none">
+                            <option value="999999">Barcha narxlar</option>
+                            <option value="180000">180 000 so'mgacha (Hamyonbop)</option>
+                            <option value="220000">220 000 so'mgacha (O'rtacha)</option>
+                            <option value="300000">300 000 so'mgacha (Premium)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venues Cards Grid -->
+            <div id="venuesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated via JS -->
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 3: FOOD RESCUE (ESG) & ONLAYN TO'YONA  -->
+        <!-- ========================================== -->
+        <section id="view-esg" class="hidden space-y-8">
+            
+            <!-- Part A: Food Rescue (ESG Integration) -->
+            <div class="bg-gradient-to-br from-emerald-900 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                            <i class="fa-solid fa-seedling mr-1.5"></i>
+                            FOOD RESCUE & ESG EKOTIZIMI
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
+                            Tadbirdan ortib qolgan toza taomni isrof qilmang — savobga yo'naltiring!
+                        </h2>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            To'ydan so'ng dasturxonga tortilmagan, qozonda ortib qolgan yaroqli taomlar maxsus bir martalik konteynerlarda Buxorodagi <strong>"Mehr-Shafqat"</strong> ko'ngillilari va kam ta'minlangan oilalarga 45 daqiqa ichida yetkaziladi. Yaroqsiz qoldiqlar esa mahalliy fermer xo'jaliklariga bio-o'g'it/ozuqa sifatida yuboriladi.
+                        </p>
+
+                        <div class="grid grid-cols-3 gap-4 pt-2">
+                            <div class="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/10">
+                                <div class="text-2xl font-extrabold text-emerald-400" id="esgPortionsCount">1,420 ta</div>
+                                <div class="text-xs text-slate-300">Ulashilgan issiq porsiyalar</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/10">
+                                <div class="text-2xl font-extrabold text-amber-400">24 ta</div>
+                                <div class="text-xs text-slate-300">Hamkor to'yxona va volontyorlar</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/10">
+                                <div class="text-2xl font-extrabold text-sky-400">-2.8 tonna</div>
+                                <div class="text-xs text-slate-300">CO₂ chiqindisi qisqardi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Food Rescue Dispatch Form -->
+                    <div class="lg:col-span-5 bg-white text-slate-800 rounded-2xl p-6 shadow-lg space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-truck-fast text-emerald-600"></i>
+                                <span>Tezkor Xayriya Chaqiiruvi (Simulyatsiya)</span>
+                            </h3>
+                            <span class="text-[11px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">Bepul xizmat</span>
+                        </div>
+
+                        <div class="space-y-3 text-sm">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 mb-1">Qaysi to'yxonadan?</label>
+                                <select id="rescueVenue" class="w-full rounded-xl border border-slate-200 px-3 py-2 font-medium bg-slate-50">
+                                    <option>Sitora Premium Saroyi (Buxoro sh.)</option>
+                                    <option>Ark Palace Grand Hall</option>
+                                    <option>Buxoro Gavhari Koshonasi</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-1">Taom turi</label>
+                                    <select id="rescueFoodType" class="w-full rounded-xl border border-slate-200 px-3 py-2 font-medium bg-slate-50">
+                                        <option>Issiq taom va Osh</option>
+                                        <option>Non va Pishiriqlar</option>
+                                        <option>Meva va Salatlar</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-1">Taxminiy miqdori (kg)</label>
+                                    <input type="number" id="rescueKg" value="18" min="5" max="200" class="w-full rounded-xl border border-slate-200 px-3 py-2 font-bold text-emerald-700 bg-slate-50">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 mb-1">Qabul qiluvchi tashkilot</label>
+                                <select id="rescueOrg" class="w-full rounded-xl border border-slate-200 px-3 py-2 font-medium bg-slate-50">
+                                    <option>"Mehr-Shafqat" Buxoro ko'ngillilar markazi</option>
+                                    <option>"Vaqf" xayriya jamoat fondi Buxoro filiali</option>
+                                    <option>Buxoro Eko-Fermer qayta ishlash klasteri</option>
+                                </select>
+                            </div>
+                            <button onclick="submitFoodRescue()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-box-heart"></i>
+                                <span>Ko'ngillilarni Chaqirish va Rasmiylashtirish</span>
+                            </button>
+                        </div>
+                        <div id="rescueAlert" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-medium"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part B: Jonli To'ylar va Onlayn To'yona (Matches Slide 10) -->
+            <div class="space-y-4">
+                <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-extrabold flex items-center gap-2">
+                            <i class="fa-solid fa-tower-broadcast animate-pulse"></i>
+                            <span>Jonli To'ylar va Onlayn To'yona</span>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-amber-100 mt-1">
+                            Uzoqdagi qarindoshlar va xorijdagi yaqinlar uchun masofadan komissiyasiz to'yona yuborish hamda tabrik yo'llash imkoniyati.
+                        </p>
+                    </div>
+                    <span class="px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-xl text-xs font-bold">
+                        Payme / Click / Uzcard Integratsiyasi
+                    </span>
+                </div>
+
+                <!-- Live Weddings Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Wedding Card 1 -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-lg">Ahmedovlar Oilasi To'yi</h4>
+                                    <p class="text-xs text-slate-500"><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i>"Sitora Premium Saroyi", Buxoro sh.</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-rose-500 text-white text-[10px] font-extrabold uppercase rounded animate-pulse">LIVE</span>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                                <span class="text-slate-600 font-medium">Kelin-Kuyov: <strong>Javohir & Mohinur</strong></span>
+                                <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold"><i class="fa-solid fa-leaf mr-1"></i>Eco-To'y: 94%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-xs text-slate-500">Yig'ilgan onlayn to'yona:<br><strong class="text-slate-900 text-sm" id="giftTotal1">6,450,000 so'm</strong></div>
+                            <button onclick="openToyonaModal('Ahmedovlar Oilasi (Javohir & Mohinur)', 'giftTotal1')" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+                                <i class="fa-solid fa-gift mr-1"></i>To'yona qilish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wedding Card 2 -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-lg">Karimovlar Sunnat To'yi</h4>
+                                    <p class="text-xs text-slate-500"><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i>"Ark Palace Grand Hall", Buxoro sh.</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-rose-500 text-white text-[10px] font-extrabold uppercase rounded animate-pulse">LIVE</span>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                                <span class="text-slate-600 font-medium">Bolajonlar: <strong>Amirbek va Umarbek</strong></span>
+                                <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold"><i class="fa-solid fa-leaf mr-1"></i>Eco-To'y: 91%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-xs text-slate-500">Yig'ilgan onlayn to'yona:<br><strong class="text-slate-900 text-sm" id="giftTotal2">4,100,000 so'm</strong></div>
+                            <button onclick="openToyonaModal('Karimovlar Sunnat To\'yi (Amirbek va Umarbek)', 'giftTotal2')" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+                                <i class="fa-solid fa-gift mr-1"></i>To'yona qilish
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wedding Card 3 -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-lg">Raxmatovlar Visol Oqshomi</h4>
+                                    <p class="text-xs text-slate-500"><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i>"Buxoro Gavhari", Kogon</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-rose-500 text-white text-[10px] font-extrabold uppercase rounded animate-pulse">LIVE</span>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                                <span class="text-slate-600 font-medium">Kelin-Kuyov: <strong>Sardor & Zilola</strong></span>
+                                <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold"><i class="fa-solid fa-leaf mr-1"></i>Eco-To'y: 96%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-xs text-slate-500">Yig'ilgan onlayn to'yona:<br><strong class="text-slate-900 text-sm" id="giftTotal3">8,900,000 so'm</strong></div>
+                            <button onclick="openToyonaModal('Raxmatovlar Oilasi (Sardor & Zilola)', 'giftTotal3')" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+                                <i class="fa-solid fa-gift mr-1"></i>To'yona qilish
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 4: TO'YSIR REELS & REYTING (TREND)     -->
+        <!-- ========================================== -->
+        <section id="view-reels" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">
+                        IJTIMOIY RAG'BATLANTIRISH MODULI
+                    </span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mt-1">To'ysir Reels — Tejamkorlikni "Trend"ga Aylantiramiz!</h2>
+                    <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mt-0.5">
+                        Odamlar "uyat bo'lmasin" deb qarzga botadi. Biz esa aksincha — eng tejamkor, isrofsiz va chiroyli o'tkazilgan to'ylarni "Haftaning eng namunali to'yi" sifatida e'tirof etib, yoshlarga o'rnak qilib ko'rsatamiz.
+                    </p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-xs text-emerald-900 max-w-xs">
+                    <i class="fa-solid fa-trophy text-amber-500 mr-1"></i>
+                    <strong>Hafta g'olibi mukofoti:</strong> Eng kam isrof qilgan oilaga hamkor to'yxonadan <strong>2,000,000 so'm Cashback</strong> qaytariladi!
+                </div>
+            </div>
+
+            <!-- Reels Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Reel 1 -->
+                <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-lg relative group h-[420px] flex flex-col justify-between p-5 text-white" style="background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.95) 85%), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80') center/cover;">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-amber-500 text-slate-950 font-extrabold text-xs rounded-full shadow">
+                            🏆 #1 Hafta Namunasi
+                        </span>
+                        <span class="px-2.5 py-1 bg-black/50 backdrop-blur-md rounded-lg text-xs font-semibold">
+                            <i class="fa-solid fa-location-dot text-amber-400 mr-1"></i>Buxoro sh.
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 rounded-xl p-3 text-xs">
+                            <div class="font-bold text-emerald-300">Natija: 18.5 mln so'm pul va 190 kg ovqat tejaldi!</div>
+                            <div class="text-slate-200 mt-0.5">"Qarzsiz to'y qildik, ortgan pulga asal oyi sayohatiga ketyapmiz!"</div>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-lg">Sitora Premium Saroyi • 250 mehmon</h3>
+                            <p class="text-xs text-slate-300">To'ysir AI Eco-Banket rejimi orqali rejalashtirildi ✨</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/15">
+                            <button onclick="likeReel(this, 1240)" class="flex items-center space-x-1.5 text-sm font-bold text-rose-400 hover:scale-105 transition">
+                                <i class="fa-solid fa-heart text-base"></i>
+                                <span>1,240 ta olqish</span>
+                            </button>
+                            <span class="text-xs text-slate-300"><i class="fa-solid fa-share-nodes mr-1"></i>340 ulashildi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reel 2 -->
+                <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-lg relative group h-[420px] flex flex-col justify-between p-5 text-white" style="background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.95) 85%), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80') center/cover;">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-emerald-500 text-slate-950 font-extrabold text-xs rounded-full shadow">
+                            🌱 #2 Zero-Waste Lider
+                        </span>
+                        <span class="px-2.5 py-1 bg-black/50 backdrop-blur-md rounded-lg text-xs font-semibold">
+                            <i class="fa-solid fa-location-dot text-amber-400 mr-1"></i>G'ijduvon
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 rounded-xl p-3 text-xs">
+                            <div class="font-bold text-emerald-300">Natija: 14.2 mln so'm tejaldi • 0% chiqindi!</div>
+                            <div class="text-slate-200 mt-0.5">"Ortib qolgan 20 porsiya osh Mehr-Shafqat fondiga yetkazildi."</div>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-lg">G'ijduvon Shodlik Saroyi • 320 mehmon</h3>
+                            <p class="text-xs text-slate-300">Jonli ijro, shaffof narx va aniq hisob-kitob 🎤✨</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/15">
+                            <button onclick="likeReel(this, 985)" class="flex items-center space-x-1.5 text-sm font-bold text-rose-400 hover:scale-105 transition">
+                                <i class="fa-solid fa-heart text-base"></i>
+                                <span>985 ta olqish</span>
+                            </button>
+                            <span class="text-xs text-slate-300"><i class="fa-solid fa-share-nodes mr-1"></i>215 ulashildi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reel 3 -->
+                <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-lg relative group h-[420px] flex flex-col justify-between p-5 text-white" style="background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.95) 85%), url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80') center/cover;">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-sky-400 text-slate-950 font-extrabold text-xs rounded-full shadow">
+                            💎 #3 Aqlli Byudjet
+                        </span>
+                        <span class="px-2.5 py-1 bg-black/50 backdrop-blur-md rounded-lg text-xs font-semibold">
+                            <i class="fa-solid fa-location-dot text-amber-400 mr-1"></i>Kogon
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 rounded-xl p-3 text-xs">
+                            <div class="font-bold text-emerald-300">Natija: 11.8 mln so'm pul oila byudjetida qoldi!</div>
+                            <div class="text-slate-200 mt-0.5">"Bolalar va keksalar ulushini to'g'ri kiritganimiz juda qo'l keldi."</div>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-lg">Buxoro Gavhari Koshonasi • 200 mehmon</h3>
+                            <p class="text-xs text-slate-300">Dabdabasiz, lekin eng yuqori saviyadagi marosim 🌟</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/15">
+                            <button onclick="likeReel(this, 842)" class="flex items-center space-x-1.5 text-sm font-bold text-rose-400 hover:scale-105 transition">
+                                <i class="fa-solid fa-heart text-base"></i>
+                                <span>842 ta olqish</span>
+                            </button>
+                            <span class="text-xs text-slate-300"><i class="fa-solid fa-share-nodes mr-1"></i>190 ulashildi</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- MODAL 1: CRM ORDER CONFIRMATION            -->
+    <!-- ========================================== -->
+    <div id="crmModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4 border border-slate-100">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900">B2B CRM Buyurtma Shakllantirildi</h3>
+                </div>
+                <button onclick="closeCRMModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <p class="text-xs text-slate-600">
+                Ushbu optimallashtirilgan menyu to'g'ridan-to'g'ri to'yxona ma'muriyatining <strong>To'ysir B2B CRM</strong> paneliga yuboriladi. Oshpaz va omborxona aniq shu gramm va kilogrammda mahsulot tayyorlaydi:
+            </p>
+            <div id="crmModalSummary" class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2 font-medium text-slate-700">
+                <!-- Filled by JS -->
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <button onclick="closeCRMModal()" class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50">Yopish</button>
+                <button onclick="confirmCRMOrder()" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow">Tasdiqlash va Shartnoma Olish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL 2: ONLAYN TO'YONA                    -->
+    <!-- ========================================== -->
+    <div id="toyonaModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="font-extrabold text-lg text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-gift text-amber-500"></i>
+                    <span>Onlayn To'yona Yuborish</span>
+                </h3>
+                <button onclick="closeToyonaModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="text-xs font-semibold text-amber-800 bg-amber-50 p-3 rounded-xl border border-amber-200" id="toyonaTargetName"></div>
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Ism-sharifingiz</label>
+                    <input type="text" id="toyonaSender" placeholder="Masalan: Tog'asi Rustam aka (Moskvadan)" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">To'yona miqdori (so'm)</label>
+                    <input type="number" id="toyonaAmount" value="500000" step="50000" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm font-bold text-emerald-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Video yoki matnli tabrik (To'yxona ekranida chiqadi)</label>
+                    <textarea id="toyonaMessage" rows="2" placeholder="Yoshlarga baxt-saodat tilayman!" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"></textarea>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeToyonaModal()" class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-600">Bekor qilish</button>
+                <button onclick="sendToyona()" class="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow">Click / Payme orqali yuborish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL 3: HAKAMLAR UCHUN PITCH ESLATMASI    -->
+    <!-- ========================================== -->
+    <div id="pitchModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="font-extrabold text-lg text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-microphone-lines text-amber-500"></i>
+                    <span>Hakamlar Hay'ati Oldida 2 Daqiqalik Himoya Nutqi (Pitch)</span>
+                </h3>
+                <button onclick="closePitchModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-200">
+                    <strong class="text-rose-900 block mb-1">1. Muammo va Xavf (30 soniya):</strong>
+                    "Hurmatli komissiya a'zolari! Bugun O'zbekistonda 81% oilaning oylik daromadi 5-12 mln so'm bo'lgani holda, bitta to'yga 50-100 mln so'm sarflanmoqda va <strong>80% dan ortiq oila to'yni qarzga</strong> o'tkazmoqda. Eng achinarlisi, 'yetmay qolmasin' va 'odamlar nima deydi' degan qo'rquv sababli har bir to'ydan keyin <strong>150-200 kg toza oziq-ovqat chiqindiga</strong> aylanmoqda. To'ydan keyingi qarzlar esa yosh oilalardagi ajrimlarning 38 foiziga sabab bo'lmoqda."
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200">
+                    <strong class="text-emerald-900 block mb-1">2. Yechim — To'ysir AI Platformasi (45 soniya):</strong>
+                    "Biz taklif etayotgan <strong>'To'ysir' B2B2C platformasi</strong> nasihat qilmaydi, balki aniq matematik va texnologik yechim beradi. Mana, ekrandagi jonli MVP dasturimizga qarang: foydalanuvchi mehmonlar soni (masalan, 300 kishi), ularning yosh tarkibi (keksalar, kattalar, bolalar) va faslni kiritadi. Bizning algoritmimiz har bir yosh toifasining real iste'mol normasini hisoblab, to'yxona oshxonasiga aniq kilogramm va grammlar kesimida buyurtma yuboradi. Natijada oila birgina to'ydan <strong>12-18 mln so'm pulni va 170 kg oziq-ovqatni</strong> tejab qoladi!"
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200">
+                    <strong class="text-amber-900 block mb-1">3. Biznes Model va Ijtimoiy Trend (45 soniya):</strong>
+                    "Loyihamiz 3 ta ustunda ishlaydi: 1) Buxorodagi to'yxonalar uchun shaffof katalog va CRM tizimi; 2) Ortib qolgan toza taomni xayriya fondlariga yo'naltiruvchi <strong>Food Rescue (ESG)</strong> moduli; 3) <strong>'To'ysir Reels'</strong> — eng isrofsiz to'y qilgan yoshlarni 'Hafta namunasi' sifatida rag'batlantirib, tejamkorlikni uyat emas, balki zamonaviy trendga aylantirish."
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="closePitchModal()" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold">Tushunarli, namoyishga qaytish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-5 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div><strong>"To'ysir"</strong> — Aqlli Tadbir Rejalashtirish va Isrofgarchilikni Qisqartirish Platformasi (MVP v1.0)</div>
+            <div>Muallif: <strong>Merajov Nurmuhammad Ikrom o'g'li</strong> • Buxoro, 2026</div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Bukhara Venues Data (Replaces Tashkent districts from screenshot with real Bukhara districts!)
+        const bukharaVenues = [
+            {
+                id: 1,
+                name: "Sitora Premium Saroyi",
+                district: "Buxoro sh.",
+                price: 220000,
+                capacity: 500,
+                rating: 4.9,
+                ecoScore: "96% Isrofsiz",
+                desc: "Shourqona va zamonaviy uslub uyg'unlashgan muhtasham koshona. AI Menyu tizimiga to'liq ulangan.",
+                img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 2,
+                name: "Ark Palace Grand Hall",
+                district: "Buxoro sh.",
+                price: 260000,
+                capacity: 600,
+                rating: 5.0,
+                ecoScore: "94% Isrofsiz",
+                desc: "Hashamatli interyer, 3D yoritish tizimi va professional B2B CRM oshxona nazorati.",
+                img: "https://images.unsplash.com/photo-1545232972-90466c4968c4?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3,
+                name: "Buxoro Gavhari Koshonasi",
+                district: "Kogon",
+                price: 180000,
+                capacity: 400,
+                rating: 4.8,
+                ecoScore: "95% Isrofsiz",
+                desc: "Hamyonbop va fayzli to'yxona. Milliy Buxoro taomlari va halol standartidagi xizmat.",
+                img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4,
+                name: "G'ijduvon Shodlik Saroyi",
+                district: "G'ijduvon",
+                price: 165000,
+                capacity: 450,
+                rating: 4.7,
+                ecoScore: "92% Isrofsiz",
+                desc: "Mashhur G'ijduvon kaboblari va mehmondo'st muhit. Yashirin xarajatlarsiz shaffof narx.",
+                img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5,
+                name: "Poi Kalon Fayz",
+                district: "Buxoro sh.",
+                price: 195000,
+                capacity: 350,
+                rating: 4.8,
+                ecoScore: "97% Isrofsiz",
+                desc: "Ixcham va o'rta hajmdagi oilaviy tantanalar hamda nahorgi osh marosimlari uchun ideal tanlov.",
+                img: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6,
+                name: "Vobkent Oqshomi Hall",
+                district: "Vobkent",
+                price: 155000,
+                capacity: 300,
+                rating: 4.6,
+                ecoScore: "91% Isrofsiz",
+                desc: "Eng tejamkor paketlar va yosh oilalar uchun maxsus 10% chegirma dasturi mavjud.",
+                img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // Switch Navigation Tabs
+        function switchTab(tabId) {
+            const views = ['calculator', 'venues', 'esg', 'reels'];
+            views.forEach(v => {
+                document.getElementById('view-' + v).classList.add('hidden');
+                document.getElementById('tab-' + v).classList.remove('tab-active');
+            });
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('tab-active');
+        }
+
+        // Balance Demographic Sliders so they always sum to 100%
+        function balanceDemographics(changedType) {
+            let s = parseInt(document.getElementById('seniorsSlider').value);
+            let a = parseInt(document.getElementById('adultsSlider').value);
+            let k = parseInt(document.getElementById('kidsSlider').value);
+
+            if (changedType === 'seniors') {
+                let rem = 100 - s;
+                a = Math.max(20, Math.round(rem * 0.75));
+                k = Math.max(0, 100 - s - a);
+            } else if (changedType === 'adults') {
+                let rem = 100 - a;
+                s = Math.max(5, Math.round(rem * 0.6));
+                k = Math.max(0, 100 - a - s);
+            } else if (changedType === 'kids') {
+                let rem = 100 - k;
+                a = Math.max(20, Math.round(rem * 0.7));
+                s = Math.max(5, 100 - k - a);
+            }
+
+            document.getElementById('seniorsSlider').value = s;
+            document.getElementById('adultsSlider').value = a;
+            document.getElementById('kidsSlider').value = k;
+
+            document.getElementById('seniorsVal').innerText = s + '%';
+            document.getElementById('adultsVal').innerText = a + '%';
+            document.getElementById('kidsVal').innerText = k + '%';
+
+            calculateAIMenu();
+        }
+
+        // Core AI Calculator Logic
+        function calculateAIMenu() {
+            const guests = parseInt(document.getElementById('guestCountSlider').value);
+            document.getElementById('guestCountDisplay').innerText = guests;
+
+            const venueSelect = document.getElementById('calcVenueSelect');
+            const basePricePerSeat = parseInt(venueSelect.value);
+            const venueName = venueSelect.options[venueSelect.selectedIndex].getAttribute('data-name');
+
+            const season = document.getElementById('seasonSelect').value;
+            const eventType = document.getElementById('eventTypeSelect').value;
+            const ecoPlate = document.getElementById('ecoPlateToggle').checked;
+
+            const seniorsPct = parseInt(document.getElementById('seniorsSlider').value) / 100;
+            const adultsPct = parseInt(document.getElementById('adultsSlider').value) / 100;
+            const kidsPct = parseInt(document.getElementById('kidsSlider').value) / 100;
+
+            // Demographic consumption multiplier (Kids eat ~55% of heavy meat/rice, Seniors ~80%, Adults 100%)
+            const demographicFactor = (adultsPct * 1.0) + (seniorsPct * 0.82) + (kidsPct * 0.58);
+            const ecoPlateFactor = ecoPlate ? 0.92 : 1.0;
+            const morningFactor = (eventType === 'morning') ? 0.78 : 1.0;
+
+            // Traditional wasteful norm per guest: ~1.45 kg total food+drinks
+            const tradPerGuestKg = eventType === 'morning' ? 1.15 : 1.45;
+            const aiPerGuestKg = tradPerGuestKg * demographicFactor * ecoPlateFactor * 0.72;
+
+            const totalTradKg = Math.round(guests * tradPerGuestKg);
+            const totalAiKg = Math.round(guests * aiPerGuestKg);
+            const savedKg = Math.max(15, totalTradKg - totalAiKg);
+            const reductionPct = Math.round((savedKg / totalTradKg) * 100);
+
+            // Financial calculations
+            const tradTotalCost = guests * basePricePerSeat * morningFactor;
+            // Savings percentage between 19% and 28% depending on parameters
+            const financialSavingRatio = Math.min(0.28, Math.max(0.18, (1 - (demographicFactor * ecoPlateFactor * 0.85))));
+            const savedMoney = Math.round(tradTotalCost * financialSavingRatio);
+            const optimalCost = tradTotalCost - savedMoney;
+
+            // Update Barometer UI
+            document.getElementById('barometerSubtitle').innerText = `${venueName.split('(')[0]} • ${guests} mehmon uchun aniq hisobot`;
+            document.getElementById('savedFoodKg').innerText = `~${savedKg} kg`;
+            document.getElementById('wasteReductionPct').innerText = `↓ -${reductionPct}% isrof qisqardi`;
+            document.getElementById('savedMoneyUzs').innerText = formatCurrencyMln(savedMoney);
+            document.getElementById('optimalBudgetUzs').innerText = formatCurrencyMln(optimalCost);
+            document.getElementById('traditionalBudgetUzs').innerText = `An'anaviy: ${formatCurrencyMln(tradTotalCost)}`;
+
+            document.getElementById('tradTotalKg').innerText = `${totalTradKg} kg masalliq`;
+            document.getElementById('aiTotalKg').innerText = `${totalAiKg} kg masalliq`;
+            document.getElementById('aiComparisonBar').style.width = `${Math.max(45, 100 - reductionPct)}%`;
+            document.getElementById('perPersonGrams').innerText = `${Math.round(aiPerGuestKg * 1000)} gr`;
+
+            // Category Breakdown
+            const drinkSeasonFactor = (season === 'summer') ? 1.25 : (season === 'winter' ? 0.85 : 1.0);
+            const meatWinterFactor = (season === 'winter') ? 1.12 : 1.0;
+
+            const categories = [
+                {
+                    name: "Asosiy taom: Buxoro Oshi (Palov)",
+                    icon: "fa-bowl-rice text-amber-600",
+                    tradGr: 420,
+                    aiGr: Math.round(300 * demographicFactor * ecoPlateFactor),
+                    pricePerKg: 75000
+                },
+                {
+                    name: "Go'sht, Kabob va Assorti",
+                    icon: "fa-drumstick-bite text-rose-600",
+                    tradGr: 320,
+                    aiGr: Math.round(220 * demographicFactor * meatWinterFactor * ecoPlateFactor),
+                    pricePerKg: 120000
+                },
+                {
+                    name: "Yangi Salatlar va Gazaklar",
+                    icon: "fa-carrot text-emerald-600",
+                    tradGr: 240,
+                    aiGr: Math.round(160 * demographicFactor * ecoPlateFactor),
+                    pricePerKg: 55000
+                },
+                {
+                    name: "Non, Patir va Milliy Shirinliklar",
+                    icon: "fa-bread-slice text-amber-500",
+                    tradGr: 230,
+                    aiGr: Math.round(135 * ((kidsPct * 1.2) + adultsPct + (seniorsPct * 0.7)) * ecoPlateFactor),
+                    pricePerKg: 45000
+                },
+                {
+                    name: "Mevalar vaSalqin Ichimliklar",
+                    icon: "fa-apple-whole text-sky-600",
+                    tradGr: 240,
+                    aiGr: Math.round(165 * drinkSeasonFactor * ecoPlateFactor),
+                    pricePerKg: 35000
+                }
+            ];
+
+            const tbody = document.getElementById('menuTableBody');
+            tbody.innerHTML = '';
+
+            categories.forEach(cat => {
+                const tradCatKg = Math.round((cat.tradGr * guests) / 1000);
+                const aiCatKg = Math.round((cat.aiGr * guests) / 1000);
+                const catSavedSom = Math.max(100000, (tradCatKg - aiCatKg) * cat.pricePerKg);
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition";
+                tr.innerHTML = `
+                    <td class="py-3 px-2 font-semibold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid ${cat.icon}"></i>
+                        <span>${cat.name}</span>
+                    </td>
+                    <td class="py-3 px-2 text-slate-600 font-medium">${cat.aiGr} gr</td>
+                    <td class="py-3 px-2 text-slate-400 line-through">${tradCatKg} kg</td>
+                    <td class="py-3 px-2 font-extrabold text-amber-600">${aiCatKg} kg</td>
+                    <td class="py-3 px-2 text-right font-bold text-emerald-600">+${catSavedSom.toLocaleString('ru-RU')} so'm</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function formatCurrencyMln(val) {
+            const mln = (val / 1000000).toFixed(1);
+            return `${mln} mln so'm`;
+        }
+
+        function triggerAIAnimation() {
+            const bar = document.getElementById('aiComparisonBar');
+            const oldW = bar.style.width;
+            bar.style.width = '10%';
+            setTimeout(() => {
+                calculateAIMenu();
+            }, 200);
+        }
+
+        // Render Bukhara Venues Catalog
+        function filterVenues() {
+            const search = document.getElementById('venueSearchInput').value.toLowerCase();
+            const minCap = parseInt(document.getElementById('venueCapSlider').value);
+            document.getElementById('filterCapVal').innerText = `${minCap}+ kishi`;
+            const district = document.getElementById('venueDistrictSelect').value;
+            const maxPrice = parseInt(document.getElementById('venuePriceSelect').value);
+
+            const filtered = bukharaVenues.filter(v => {
+                const matchName = v.name.toLowerCase().includes(search) || v.district.toLowerCase().includes(search);
+                const matchCap = v.capacity >= minCap;
+                const matchDist = (district === 'all') || (v.district === district);
+                const matchPrice = v.price <= maxPrice;
+                return matchName && matchCap && matchDist && matchPrice;
+            });
+
+            document.getElementById('venueCountBadge').innerText = `${filtered.length} ta to'yxona topildi`;
+            const grid = document.getElementById('venuesGrid');
+            grid.innerHTML = '';
+
+            filtered.forEach(v => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${v.img}" alt="${v.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/0f172a/f59e0b?text=Buxoro+Saroyi'">
+                            <span class="absolute top-3 left-3 px-2.5 py-1 bg-slate-900/80 backdrop-blur-sm text-white text-xs font-bold rounded-lg">
+                                <i class="fa-solid fa-location-dot text-amber-400 mr-1"></i>${v.district}
+                            </span>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 bg-emerald-600 text-white text-xs font-bold rounded-lg shadow">
+                                <i class="fa-solid fa-leaf mr-1"></i>${v.ecoScore}
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-extrabold text-slate-900 text-base">${v.name}</h3>
+                                <span class="text-sm font-extrabold text-amber-600 whitespace-nowrap">${v.price.toLocaleString('ru-RU')} so'm</span>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed">${v.desc}</p>
+                            <div class="pt-2 flex items-center justify-between text-xs text-slate-600 font-medium">
+                                <span><i class="fa-solid fa-users text-slate-400 mr-1"></i>Sig'imi: <strong>${v.capacity} kishi</strong></span>
+                                <span><i class="fa-solid fa-star text-amber-400 mr-1"></i><strong>${v.rating}</strong> (Shaffof reyting)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="selectVenueForAI(${v.price})" class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>AI Menyu Tuzish va Band Qilish</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function selectVenueForAI(price) {
+            const select = document.getElementById('calcVenueSelect');
+            for (let i = 0; i < select.options.length; i++) {
+                if (parseInt(select.options[i].value) === price) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            switchTab('calculator');
+            calculateAIMenu();
+        }
+
+        // CRM Modal Functions
+        function openCRMModal() {
+            const guests = document.getElementById('guestCountSlider').value;
+            const venueSelect = document.getElementById('calcVenueSelect');
+            const venueName = venueSelect.options[venueSelect.selectedIndex].getAttribute('data-name');
+            const savedFood = document.getElementById('savedFoodKg').innerText;
+            const savedMoney = document.getElementById('savedMoneyUzs').innerText;
+            const optBudget = document.getElementById('optimalBudgetUzs').innerText;
+
+            document.getElementById('crmModalSummary').innerHTML = `
+                <div><strong>To'yxona:</strong> ${venueName}</div>
+                <div><strong>Mehmonlar soni:</strong> ${guests} kishi</div>
+                <div><strong>Tasdiqlangan optimal byudjet:</strong> <span class="text-emerald-700 font-bold">${optBudget}</span></div>
+                <div><strong>Kafolatlangan tejamkorlik:</strong> <span class="text-amber-600 font-bold">${savedMoney} (${savedFood} masalliq)</span></div>
+                <div class="pt-1 text-[11px] text-slate-500">✔ Vositachilar ustamasi yo'q • ✔ Elektron shartnoma kodi: #BUX-${Math.floor(1000 + Math.random() * 9000)}</div>
+            `;
+            const modal = document.getElementById('crmModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCRMModal() {
+            const modal = document.getElementById('crmModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function confirmCRMOrder() {
+            closeCRMModal();
+            const badge = document.getElementById('globalSavedFood');
+            badge.innerText = "14,996 kg (+176 kg)";
+        }
+
+        // Food Rescue Simulation
+        function submitFoodRescue() {
+            const venue = document.getElementById('rescueVenue').value;
+            const kg = document.getElementById('rescueKg').value;
+            const org = document.getElementById('rescueOrg').value;
+            const alertBox = document.getElementById('rescueAlert');
+
+            alertBox.classList.remove('hidden');
+            alertBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>Qabul qilindi!</strong> ${venue}dan <strong>${kg} kg</strong> toza taomni olib ketish uchun <strong>${org}</strong> navbatchi mashinasi yo'lga chiqdi (Yetib kelish vaqti: ~18 daqiqa).`;
+            
+            const countEl = document.getElementById('esgPortionsCount');
+            const current = parseInt(countEl.innerText.replace(/[^0-9]/g, ''));
+            countEl.innerText = (current + parseInt(kg) * 2).toLocaleString('en-US') + " ta";
+        }
+
+        // Online Toyona Modal
+        let activeGiftTargetId = 'giftTotal1';
+        function openToyonaModal(familyName, targetId) {
+            activeGiftTargetId = targetId;
+            document.getElementById('toyonaTargetName').innerText = `Qabul qiluvchi: ${familyName}`;
+            const modal = document.getElementById('toyonaModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeToyonaModal() {
+            const modal = document.getElementById('toyonaModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function sendToyona() {
+            const amount = parseInt(document.getElementById('toyonaAmount').value) || 500000;
+            const targetEl = document.getElementById(activeGiftTargetId);
+            const currentVal = parseInt(targetEl.innerText.replace(/[^0-9]/g, ''));
+            const newVal = currentVal + amount;
+            targetEl.innerText = newVal.toLocaleString('en-US') + " so'm";
+            closeToyonaModal();
+        }
+
+        // Reels Like Button
+        function likeReel(btn, baseLikes) {
+            const span = btn.querySelector('span');
+            if (!btn.classList.contains('liked')) {
+                btn.classList.add('liked');
+                span.innerText = (baseLikes + 1).toLocaleString('en-US') + " ta olqish (Siz ham qo'shildingiz!)";
+            }
+        }
+
+        // Pitch Modal
+        function openPitchModal() {
+            const modal = document.getElementById('pitchModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closePitchModal() {
+            const modal = document.getElementById('pitchModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Initialize on Page Load
+        window.onload = function() {
+            calculateAIMenu();
+            filterVenues();
+        };
+    </script>
 </body>
 </html>
